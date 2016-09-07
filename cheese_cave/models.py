@@ -1,3 +1,4 @@
+import os
 import datetime
 
 import boto3
@@ -12,7 +13,11 @@ import botocore.exceptions
 
 ISOFMT = "%Y-%m-%dT%H:%M:%S.%f"
 
-sdb = boto3.client('sdb')
+sdb = boto3.client(
+    'sdb',
+    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'),
+)
 
 class CheeseCave(object):
 

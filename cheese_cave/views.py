@@ -4,6 +4,9 @@ from cheese_cave import app
 
 from models import CheeseCave
 
+if 'ENV' not in os.environ:
+    exit("set the 'ENV' environment variable")
+
 cheesecave = CheeseCave(os.environ.get('ENV'))
 
 @app.route('/')
